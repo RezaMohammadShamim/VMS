@@ -1,0 +1,1 @@
+<h2>Vendor entry page</h2>
