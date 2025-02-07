@@ -4,7 +4,7 @@
                         <h4 class="py-3 text-center text-success fw-bold">Dashboard</h4>
                 </a>
                 <ul class="d-flex flex-column nav">
-                        <li class="nav-item fw-bolder"><a class="nav-link align-items-center" href="/Vehicle_Maintenance/index.php" onclick="setActive(this)"><i
+                        <li class="nav-item fw-bolder"><a class="nav-link align-items-center" href="/VMS/index.php" onclick="setActive(this)"><i
                                                 class="fa fa-house me-2"></i>Home</a></li>
                         <li class="nav-item fw-bolder"><a class="nav-link align-items-center" href="#" onclick="setActive(this)"><i
                                                 class="fa fa-user-alt me-2"></i>Admin</a></li>
@@ -17,28 +17,28 @@
                                         </a>
                                         <ul class="accordion-collapse collapse show" data-bs-parent="#accordion_list" id="submenu1"
                                                 style="font-family: sans-serif; font-size: 12px;">
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Job creation.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Job creation.php"
                                                                 onclick="setActive(this)">Job Creation</a>
                                                 </li>
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Requisition creation.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Requisition creation.php"
                                                                 onclick="setActive(this)">Requisition
                                                                 Creation</a></li>
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Out_door Job.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Out_door Job.php"
                                                                 onclick="setActive(this)">Out_door Job</a>
                                                 </li>
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Out station bill posting.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Out station bill posting.php"
                                                                 onclick="setActive(this)">Out_door bill
                                                                 posting</a></li>
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Out station job.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Out station job.php"
                                                                 onclick="setActive(this)">Out_station
                                                                 job</a></li>
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Out station bill posting.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Out station bill posting.php"
                                                                 onclick="setActive(this)">Out_station bill
                                                                 posting</a></li>
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Vehicle entry.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Vehicle entry.php"
                                                                 onclick="setActive(this)">Vehicle Entry</a>
                                                 </li>
-                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/Vehicle_Maintenance/Workshop/Vendor entry.php"
+                                                <li class="nav-item"><a class="nav-link hover-effect rounded-3 fw-semibold" href="/VMS/Workshop/Vendor entry.php"
                                                                 onclick="setActive(this)">Vendor Entry</a>
                                                 </li>
                                         </ul>
