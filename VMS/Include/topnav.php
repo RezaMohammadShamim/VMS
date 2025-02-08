@@ -5,11 +5,11 @@
   </div>
   <div class="col-md-1 d-flex justify-content-between mt-3">
     <div>
-      <a href="#navbar" class="" data-bs-toggle="collapse" aria-expanded="false"><i
+      <a href="#navbar" class="text-secondary" data-bs-toggle="collapse" aria-expanded="false"><i
           class="fa-solid fa-bars fa-md float-start"></i></a>
     </div>
     <div>
-      <a href="/VMS/index.php"><i class="fa-solid fa-house fa-md float-end"></i></a>
+      <a href="/VMS/index.php" class="text-secondary"><i class="fa-solid fa-house fa-md float-end"></i></a>
     </div>
   </div>
   <div class="col-md-5 mt-3 d-flex justify-content-end">

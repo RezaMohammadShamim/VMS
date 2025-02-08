@@ -1,19 +1,21 @@
 <div class="container-fluid shadow-sm">
     <form class="form-control" action="#" method="POST">
         <div class="row shadow-sm mb-4 border rounded">
-            <h5 class="bg-light p-1 fw-bold text-align-center">Indoor Job Creation</h5>
+            <h5 class="bg-light p-1 fw-bold text-primary">Indoor Job Creation</h5>
         </div>
         <div class="row justify-content-around">
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-regular fa-calendar-days"></i></span>
-                    <input class="form-control" type="date" required>
+                    <input type="date" id="date" name="date" class="form-control"
+                        required onchange="generateNumber()">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-solid fa-text-width"></i></span>
-                    <input class="form-control" type="text" placeholder="Job Number" required>
+                    <input type="text" id="autoNumber" name="autoNumber"
+                        class="form-control" readonly>
                 </div>
             </div>
             <div class="col">

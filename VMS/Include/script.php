@@ -7,3 +7,13 @@
         link.classList.add('active');
     }
 </script>
+<script>
+    function generateNumber() {
+        let dateInput = document.getElementById("date").value;
+        if (dateInput) {
+            let formattedDate = dateInput.replace(/-/g, ""); // Convert YYYY - MM - DD to YYYYMMDD
+            let randomNum = Math.floor(100 + Math.random() * 900); // Generate 3 - digit random number
+            document.getElementById("autoNumber").value = formattedDate + "-" + randomNum;
+        }
+    }
+</script>
