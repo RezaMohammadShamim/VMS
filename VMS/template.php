@@ -1,6 +1,12 @@
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/db_connection.php'); // Include database connection
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/db_connection.php')) {
+  die("File not found!");
+} 
+?>s
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once("Include/header.php");?>
+<?php include_once("Include/header.php"); ?>
 
 <body>
   <div class="container-fluid w-100" style="padding: 1px;">
@@ -39,10 +45,10 @@
       </main>
     </section>
     <!-- Footer (3rd container) -->
-    <?php include_once("Include/footer.php");?>
+    <?php include_once("Include/footer.php"); ?>
   </div>
   <!-- Bootstrap JS (optional) -->
-  <?php include_once ("Include/script.php"); ?>
+  <?php include_once("Include/script.php"); ?>
 </body>
 
 </html>

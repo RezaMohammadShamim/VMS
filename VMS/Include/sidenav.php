@@ -1,6 +1,6 @@
 <div class="col-md-2 vh-100 mt-0 pt-0 bg-light shadow-sm collapse show" id="navbar">
         <nav class="d-md-block vh-100" style="font-family: sans-serif; font-size: 14px;">
-                <a class="nav-link text-dark align-items-center" href="../index.php">
+                <a class="nav-link text-dark align-items-center" href="/VMS/index.php">
                         <h4 class="py-3 text-center text-success fw-bold">Dashboard</h4>
                 </a>
                 <ul class="d-flex flex-column nav">

@@ -14,15 +14,17 @@
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-solid fa-text-width"></i></span>
-                    <input type="text" id="autoNumber" name="autoNumber"
+                    <input type="text" id="autoNumber" name="autoNumber" placeholder="Job Number"
                         class="form-control" readonly>
                 </div>
             </div>
             <div class="col">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-solid fa-truck"></i></span>
-                    <input class="form-control w-25" type="text" placeholder="Registration Number" required>
-                    <input class="form-control" type="text" placeholder="Model" required>
+                    <input class="form-control w-25" type="text" id="vehicle_search" placeholder="Enter Vehicle No">
+                    <div id="suggestions"></div>
+                    <input class="form-control" type="text" id="model" placeholder="Model" readonly>
+
                 </div>
             </div>
         </div>
