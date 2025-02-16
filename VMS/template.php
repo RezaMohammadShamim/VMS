@@ -3,7 +3,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/db_connection.php'); // In
 if (!file_exists($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/db_connection.php')) {
   die("File not found!");
 } 
-?>s
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once("Include/header.php"); ?>

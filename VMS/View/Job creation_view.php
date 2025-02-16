@@ -32,9 +32,13 @@
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-solid fa-wrench"></i></span>
-                    <input class="form-control" type="text" placeholder="Multiple Mechanic" required>
+                    <input type="text" id="multiple_mechanic" class="form-control" placeholder="Responsible mechanics">
+                    <div id="mechanicDropdown" class="dropdown-content"></div>
+                    <div id="selectedMechanicsList"></div> <!-- Selected Mechanics List Will Appear Here -->
                 </div>
             </div>
+            
+
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa-solid fa-motorcycle"></i></span>

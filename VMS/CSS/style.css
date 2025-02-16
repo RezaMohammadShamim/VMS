@@ -50,3 +50,38 @@ body {
   background-color: #f0f0f0;  /* Highlight color */
   cursor: pointer;
 }
+
+/* Basic styling for dropdown content */
+.selected-mechanic {
+    display: inline-block;
+    background-color: #3d3d3d;
+    color: white;
+    padding: 2px 5px;
+    margin: 0px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.selected-mechanic button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.selected-mechanic button:hover {
+    color: red;
+}
+
+
+/* Restore right-side rounded corners */
+.input-group .form-control {
+  border-top-right-radius: 0.375rem !important; /* Bootstrap's default border-radius */
+  border-bottom-right-radius: 0.375rem !important;
+}
+
+/* Ensure the input group text does not interfere */
+.input-group-text {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
