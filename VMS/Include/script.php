@@ -198,3 +198,71 @@
         });
     });
 </script>
+<!-- Script for auto-load Id_no based on Driver_name and auto load driver_name based on driver_id Selection -->
+<script>
+    $(document).ready(function() {
+        // Search by Driver Name
+        $("#driver_search").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "/VMS/Config/fetch_driver.php",
+                    method: "POST",
+                    dataType: "json",
+                    data: {
+                        query: request.term
+                    },
+                    success: function(data) {
+                        response($.map(data, function(item) {
+                            return {
+                                label: item.driver_name,
+                                value: item.driver_name,
+                                id: item.driver_id
+                            };
+                        }));
+                    }
+                });
+            },
+            minLength: 1,
+            focus: function(event, ui) { // Live update on hover
+                $("#driver_id").val(ui.item.id);
+            },
+            select: function(event, ui) {
+                $("#driver_search").val(ui.item.value);
+                $("#driver_id").val(ui.item.id);
+                return false;
+            }
+        });
+
+        // Search by Driver ID
+        $("#driver_id").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "/VMS/Config/fetch_driver_id.php",
+                    method: "POST",
+                    dataType: "json",
+                    data: {
+                        query: request.term
+                    },
+                    success: function(data) {
+                        response($.map(data, function(item) {
+                            return {
+                                label: item.driver_id,
+                                value: item.driver_id,
+                                name: item.driver_name
+                            };
+                        }));
+                    }
+                });
+            },
+            minLength: 1,
+            focus: function(event, ui) { // Live update on hover
+                $("#driver_search").val(ui.item.name);
+            },
+            select: function(event, ui) {
+                $("#driver_id").val(ui.item.value);
+                $("#driver_search").val(ui.item.name);
+                return false;
+            }
+        });
+    });
+</script>
