@@ -1,6 +1,6 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/db_connection.php'); // Include database connection
-if (!file_exists($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/db_connection.php')) {
+include_once($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/function.php'); // Include database connection
+if (!file_exists($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/function.php')) {
   die("File not found!");
 } 
 ?>
@@ -16,7 +16,7 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . '/VMS/Config/db_connection.php')) {
     <!-- Navigation Bar + Main content (2nd container) -->
     <section class="row vh-100 w-100" style="margin-top: 105px;">
       <?php include_once("Include/sidenav.php"); ?>
-      <main class="col shadow-sm d-flex content" style="min-height: fit-content;">
+      <main class="col shadow-sm d-flex flex-grow-1">
         <?php
         if (isset($_view)) {
           if ($_view == "job_creation") {

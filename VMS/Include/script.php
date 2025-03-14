@@ -117,87 +117,97 @@
     $(document).ready(function() {
         let selectedMechanics = [];
 
-        // Event for typing in the mechanic search field
-        $("#multiple_mechanic").on("keyup", function() {
-            let query = $(this).val();
-            if (query.length > 0) {
-                $.ajax({
-                    url: "/VMS/Config/fetch_mechanics.php",
-                    type: "GET",
-                    data: {
-                        q: query
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        let dropdown = $("#mechanicDropdown");
-                        dropdown.empty().show();
+        // Search mechanics dynamically
+        $('#multiple_mechanic').on('input', function() {
+            let searchTerm = $(this).val().trim();
 
-                        // Display mechanics not already selected
-                        data.forEach(function(item) {
-                            if (!selectedMechanics.some(m => m.id === item.id)) {
-                                dropdown.append(
-                                    `<label>
-                                        <input type="checkbox" value="${item.id}" data-name="${item.text}"> ${item.text}
-                                    </label><br>`
-                                );
+            if (searchTerm.length > 0) {
+                $.ajax({
+                    url: '/VMS/Config/fetch_mechanics.php',
+                    method: 'GET',
+                    data: {
+                        q: searchTerm
+                    },
+                    success: function(response) {
+                        const mechanics = JSON.parse(response);
+                        let dropdownContent = '';
+
+                        mechanics.forEach(function(mechanic) {
+                            if (!selectedMechanics.some(m => m.name === mechanic)) {
+                                dropdownContent += `
+                                    <div class="dropdown-item">
+                                        <label>
+                                            <input type="checkbox" class="mechanic-checkbox" data-name="${mechanic}"> 
+                                            ${mechanic}
+                                        </label>
+                                    </div>`;
                             }
                         });
+
+                        $('#mechanicDropdown').html(dropdownContent).show();
+                    },
+                    error: function() {
+                        console.log('Error fetching mechanics.');
                     }
                 });
             } else {
-                $("#mechanicDropdown").hide();
+                $('#mechanicDropdown').hide();
             }
         });
 
-        // Event for handling mechanic selection
-        $(document).on("change", "#mechanicDropdown input[type='checkbox']", function() {
-            let mechanicId = $(this).val();
-            let mechanicName = $(this).data("name");
+        // Select mechanics from dropdown
+        $(document).on('change', '.mechanic-checkbox', function() {
+            let mechanic = $(this).data('name');
 
-            if (this.checked) {
-                selectedMechanics.push({
-                    id: mechanicId,
-                    name: mechanicName
-                });
-                updateSelectedList(); // Update list of selected mechanics
-                $("#multiple_mechanic").val(""); // Clear input field after selection
+            if ($(this).prop('checked')) {
+                if (!selectedMechanics.some(m => m.name === mechanic)) {
+                    selectedMechanics.push({
+                        name: mechanic
+                    });
+                    displaySelectedMechanics();
+                }
+            } else {
+                selectedMechanics = selectedMechanics.filter(m => m.name !== mechanic);
+                displaySelectedMechanics();
             }
         });
 
-        // Function to update the list of selected mechanics
-        function updateSelectedList() {
-            let listContainer = $("#selectedMechanicsList");
-            listContainer.empty();
+        // Function to display selected mechanics
+        function displaySelectedMechanics() {
+            let htmlContent = '';
+            let hiddenInputs = '';
 
-            selectedMechanics.forEach((mechanic, index) => {
-                listContainer.append(`
-                    <div class="selected-mechanic">
-                        ${mechanic.name} <button class="remove-mechanic" data-index="${index}">❌</button>
-                    </div>
-                `);
+            selectedMechanics.forEach(function(mechanic) {
+                htmlContent += `
+                    <div class="selected-mechanic badge bg-dark p-2 me-1">
+                        ${mechanic.name} 
+                        <span class="text-danger remove-mechanic" style="cursor:pointer;" data-mechanic="${mechanic.name}">✖</span>
+                    </div>`;
+
+                hiddenInputs += `<input type="hidden" name="multiple_mechanic[]" value="${mechanic.name}">`;
             });
+
+            $('#selectedMechanicsList').html(htmlContent);
+            $('#hiddenMechanicInputs').html(hiddenInputs);
         }
 
-        // Event for removing a selected mechanic from the list
-        $(document).on("click", ".remove-mechanic", function() {
-            let index = $(this).data("index");
-            selectedMechanics.splice(index, 1); // Remove from list
-            updateSelectedList(); // Re-render selected mechanics list
+        // Remove mechanic from selected list
+        $(document).on('click', '.remove-mechanic', function() {
+            let mechanicToRemove = $(this).data('mechanic');
+            selectedMechanics = selectedMechanics.filter(m => m.name !== mechanicToRemove);
+            displaySelectedMechanics();
         });
 
-        // Close mechanic dropdown when clicking outside
+        // Hide dropdown when clicking outside
         $(document).click(function(e) {
-            if (!$(e.target).closest(".input-group").length) {
-                $("#mechanicDropdown").hide();
+            if (!$(e.target).closest('#multiple_mechanic, #mechanicDropdown').length) {
+                $('#mechanicDropdown').hide();
             }
-        });
-
-        // Prevent dropdown from closing when clicking inside the dropdown
-        $(document).on("click", "#mechanicDropdown", function(e) {
-            e.stopPropagation();
         });
     });
 </script>
+
+
 <!-- Script for auto-load Id_no based on Driver_name and auto load driver_name based on driver_id Selection -->
 <script>
     $(document).ready(function() {
@@ -264,5 +274,18 @@
                 return false;
             }
         });
+    });
+</script>
+
+<!--Scripts for message disappear after few moments-->
+<script>
+    // Wait for the DOM to fully load
+    document.addEventListener("DOMContentLoaded", function() {
+        let message = document.getElementById("successMessage_1");
+        if (message) {
+            setTimeout(function() {
+                message.style.display = "none"; // Hide after 2 seconds
+            }, 2000); // 2000ms = 2 seconds
+        }
     });
 </script>
