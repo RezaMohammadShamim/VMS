@@ -13,6 +13,10 @@ class VMS {
             die("Database Connection Error: " . $this->conn->connect_error);
         }
     }
+    public function getConnection() {
+        return $this->conn;
+    }
+    
 
     public function indoor_job() {
         // Retrieve POST data safely

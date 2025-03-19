@@ -84,27 +84,52 @@ if (isset($_POST['IndoorJob'])) {
             <button class="btn btn-primary fw-bold mt-2" type="submit" name="IndoorJob">Save the Job</button>
         </div>
     </form>
-    <!--2nd part for viewing Indoor Job & step to create Requisition-->
-    <div class="row mt-5">
-        <div class="">
-            <table class="table table-hover text-center">
-                <thead class="bg-warning">
-                    <tr>
-                        <th>SL No.</th>
-                        <th>Job Date</th>
-                        <th>Registration No.</th>
-                        <th>Model</th>
-                        <th>View</th>
-                        <th>Edit</th>
-                        <th>Job No.</th>
-                        <th>Done Req.</th>
-                        <th>Create Req.</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <!--2nd part for showing Indoor Job & step to create Requisition-->
+    <div class="row mt-3">
+        <table class="table table-hover text-center">
+            <thead class="bg-warning">
+                <tr>
+                    <th>SL No.</th>
+                    <th>Job Date</th>
+                    <th>Registration No.</th>
+                    <th>Model</th>
+                    <th>View</th>
+                    <th>Edit</th>
+                    <th>Job No.</th>
+                    <th>Done Req.</th>
+                    <th>Create Req.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $obj = new VMS();
+                $conn = $obj->getConnection();
+                $sql = "SELECT * FROM indoor_job ORDER BY Id DESC";
+                $result = mysqli_query($conn, $sql);
 
-                </tbody>
-            </table>
-        </div>
+                $serial = 1;
+
+                while ($row = mysqli_fetch_array($result)) {
+                    $job_date = $row['job_date'];
+                    $vehicle_reg = $row['vehicle_reg'];
+                    $model = $row['model'];
+                    $job_no = $row['job_no'];
+                    $completed_req = $row['completed_req'];
+                    echo "<tr>
+                            <td>$serial</td>
+                            <td>$job_date</td>
+                            <td>$vehicle_reg</td>
+                            <td>$model</td>
+                            <td><i class='fa-regular fa-eye'></i></td>
+                            <td><i class='fa-regular fa-pen-to-square'></i></td>
+                            <td>$job_no</td>
+                            <td>$completed_req</td>
+                            <td><i class='fa-regular fa-plus'></i></td>                            
+                            </tr>";
+                    $serial++; //for auto increment serial No.;
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
 </div>
